@@ -1,0 +1,13 @@
+version: "3.8"
+services: 
+    proxy:
+        image: mitmproxy/mitmproxy:4.0.1
+        volumes: 
+            - ${PWD}/certs:/home/mitmproxy/.certs
+            - ${PWD}/plugins:/home/mitmproxy/plugins
+            - ${PWD}/entrypoint.sh:/usr/local/bin/entrypoint.sh
+        ports: 
+            - "8081:8080"
+        command: >
+            pip3 install -r requirements.txt &&
+            mitmproxy --cert=/home/mitmproxy/.certs/cert.pem
