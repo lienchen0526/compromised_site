@@ -1,3 +1,4 @@
 .venv
 .vscode
 certs
+plugins/src/__pycache__
