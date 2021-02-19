@@ -1,10 +1,15 @@
 version: "3.3"
 services: 
     proxy:
-        image: mitmproxy/mitmproxy:4.0.1
+        image: mitmproxy/mitmproxy:${MITMVER}
+        labels: 
+            - mitmproxy
+        env_file: 
+            - .env
         volumes: 
-            - ${PWD}/plugins:/home/mitmproxy/plugins
-            - ${PWD}/certs:/home/mitmproxy/.mitmproxy
+            - ${PWD}/plugins:${MITMHOME}/plugins
+            - ${PWD}/certs:${MITMHOME}/.mitmproxy
+            - ${PWD}/logs:${MITMHOME}/logs
             - ${PWD}/entrypoint.sh:/usr/local/bin/entrypoint.sh
         ports: 
             - "8080:8080"

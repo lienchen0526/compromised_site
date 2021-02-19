@@ -1,6 +1,7 @@
 #!/bin/sh
-pip3 install -r /home/mitmproxy/plugins/requirements.txt
-chown -R mitmproxy:mitmproxy /home/mitmproxy/.mitmproxy
+pip3 install -r ${MITMHOME}/plugins/requirements.txt
+chown -R mitmproxy:mitmproxy ${MITMHOME}/.mitmproxy
+chown -R mitmproxy:mitmproxy ${MITMHOME}/logs
 su-exec mitmproxy mitmdump\
-    -s /home/mitmproxy/plugins/src/addons.py
+    -s ${MITMHOME}/plugins/src/addons.py\
     --set block_global=false
