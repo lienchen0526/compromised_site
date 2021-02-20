@@ -7,13 +7,33 @@ services:
         env_file: 
             - .env
         volumes: 
-            - ${PWD}/plugins:${MITMHOME}/plugins
+            - ${PWD}/mitmhost/plugins:${MITMHOME}/plugins
+            - ${PWD}/mitmhost/entrypoint.sh:/usr/local/bin/entrypoint.sh
             - ${PWD}/certs:${MITMHOME}/.mitmproxy
-            - ${PWD}/logs:${MITMHOME}/logs
-            - ${PWD}/entrypoint.sh:/usr/local/bin/entrypoint.sh
+            - ${PWD}/logs/mitm:${MITMHOME}/logs
+            - ${HOST_ATTCK_MOD_DIR}:${MITM_RESOURCE_DIR}
         ports: 
             - "8080:8080"
             - "8081:8081"
         command: >
             sh -c "chmod +x /usr/local/bin/entrypoint.sh &&
             /usr/local/bin/entrypoint.sh"
+        tty: true
+
+    flask:
+        image: python:${FLASK_PY_VER}
+        labels:
+            - c2server
+        env_file: 
+            - .env
+        volumes:
+            - ${PWD}/http_server/plugins:${HTTPHOME}/apps
+            - ${PWD}/http_server/entrypoint.sh:/usr/local/bin/entrypoint.sh
+            - ${PWD}/logs/c2:${HTTPHOME}/logs
+            - ${HOST_ATTCK_MOD_DIR}:${HTTP_RESOURCE_DIR}
+        ports:
+            - "5000:5000"
+        command: >
+            bash -c "chmod +x /usr/local/bin/entrypoint.sh && 
+            /usr/local/bin/entrypoint.sh"
+        

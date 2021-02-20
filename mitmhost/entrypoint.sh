@@ -3,5 +3,5 @@ pip3 install -r ${MITMHOME}/plugins/requirements.txt
 chown -R mitmproxy:mitmproxy ${MITMHOME}/.mitmproxy
 chown -R mitmproxy:mitmproxy ${MITMHOME}/logs
 su-exec mitmproxy mitmdump\
-    -s ${MITMHOME}/plugins/src/addons.py\
+    -s ${MITMHOME}/plugins/addons.py\
     --set block_global=false

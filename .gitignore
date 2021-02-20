@@ -1,4 +1,5 @@
 .venv
 .vscode
 certs
-plugins/src/__pycache__
+*.pyc
+*.pyo

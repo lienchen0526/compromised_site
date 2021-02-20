@@ -1,0 +1,18 @@
+{
+    "resource_ids": {
+        "hello.js": "<real_path_to_hello.js_in_src_dir>",
+        "world.html": "<real_path_to_world.html_in_src_dir>"
+    },
+    "resource_distribution_rules":{
+        "hello.js":{
+            "accept_methods": "GET:POST",
+            "type": "js",
+            "hash": "hello world"
+        },
+        "world.html": {
+            "accept_methods": "GET",
+            "type": "iframe",
+            "hash": "world hello"
+        }
+    }
+}

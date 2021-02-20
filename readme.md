@@ -22,3 +22,5 @@ port:
 
 ### First Time Run
 The first time you run the proxy server, certificate will be generated in `cert` directory. You must add certificate to your browser (Simulated victim). And you have to enable proxy on the browser or computer, setting the proxy server to the host running the container.
+
+### Action when Recieve the 

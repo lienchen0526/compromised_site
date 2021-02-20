@@ -1,0 +1,1 @@
+pip install -r ${HTTPHOME}/apps/requirements.txt
