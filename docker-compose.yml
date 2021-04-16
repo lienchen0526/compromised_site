@@ -11,14 +11,14 @@ services:
             - ${PWD}/mitmhost/entrypoint.sh:/usr/local/bin/entrypoint.sh
             - ${PWD}/certs:${MITMHOME}/.mitmproxy
             - ${PWD}/logs/mitm:${MITMHOME}/logs
-            - ${HOST_ATTCK_MOD_DIR}:${MITM_RESOURCE_DIR}
+            - ${HOST_ATTCK_MOD_DIR}:${MITM_RESOURCE_DIR}:ro
+        network_mode: "host"
         ports: 
             - "8080:8080"
             - "8081:8081"
         command: >
             sh -c "chmod +x /usr/local/bin/entrypoint.sh &&
             /usr/local/bin/entrypoint.sh"
-        tty: true
 
     flask:
         image: python:${FLASK_PY_VER}
@@ -30,10 +30,11 @@ services:
             - ${PWD}/http_server/plugins:${HTTPHOME}/apps
             - ${PWD}/http_server/entrypoint.sh:/usr/local/bin/entrypoint.sh
             - ${PWD}/logs/c2:${HTTPHOME}/logs
-            - ${HOST_ATTCK_MOD_DIR}:${HTTP_RESOURCE_DIR}
+            - ${PWD}/httpcerts:${HTTPHOME}/certs
+            - ${HOST_ATTCK_MOD_DIR}:${HTTP_RESOURCE_DIR}:ro
+        network_mode: "host"
         ports:
-            - "5000:5000"
+            - "5000:${HTTP_CONTAINER_PORT}"
         command: >
             bash -c "chmod +x /usr/local/bin/entrypoint.sh && 
             /usr/local/bin/entrypoint.sh"
-        

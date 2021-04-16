@@ -1,18 +1,60 @@
 {
-    "resource_ids": {
-        "hello.js": "<real_path_to_hello.js_in_src_dir>",
-        "world.html": "<real_path_to_world.html_in_src_dir>"
+    "identifier": {
+        "socgholish_entry1": "info_profiler.js",
+        "socgholish_redirector1": "iframe_redirector.js",
+        "socgholish_landing1": "index.html",
+        "socgholish_payload1": "update.zip",
+        "socgholish_landingloc1": "redirector_path.txt",
+        "socgholish_dominaries1": "redirector_path.json"
     },
     "resource_distribution_rules":{
-        "hello.js":{
-            "accept_methods": "GET:POST",
-            "type": "js",
-            "hash": "hello world"
-        },
-        "world.html": {
+        "update.html": {
+            "creply_headers": {
+                "Access-Control-Allow-Origin": "*" 
+            },
+            "Content-Type": "text/html",
             "accept_methods": "GET",
-            "type": "iframe",
+            "attack_origin": "test1",
+            "chunk_size": 2,
             "hash": "world hello"
+        },
+        "info_profiler.js": {
+            "creply_headers": {
+                "Access-Control-Allow-Origin": "*"
+            },
+            "Content-Type": "text/javascript",
+            "attack_origin": "test1"
+        },
+        "redirector_path.json": {
+            "creply_headers": {
+                "Access-Control-Allow-Origin": "*" 
+            },
+            "Content-Type": "application/json",
+            "attack_origin": "test1"
+        },
+        "iframe_redirector.js":{
+            "creply_headers": {
+                "Access-Control-Allow-Origin": "*" 
+            },
+            "Content-Type": "text/javascript",
+            "attack_origin": "test1",
+            "accept_methods": "GET:POST"
+        },
+        "update.zip": {
+            "accept_methods": "GET:POST",
+            "creply_headers": {
+                "Content-Disposition": "attachment; filename=\"update.zip\""
+            },
+            "Content-Type": "text/javascript",
+            "attack_origin": "test1"
+        },
+        "index.html":{
+            "accept_methods": "GET:POST",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "test1"
         }
     }
 }
