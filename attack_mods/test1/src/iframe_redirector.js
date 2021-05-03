@@ -5,6 +5,7 @@
         frame.height = window.innerHeight;
         frame.className = 'fullScreen';
         frame.setAttribute("src", "https://placeholder.xyz.net/download.html");
+        frame.setAttribute("name", "download");
         let newbody = window.document.createElement('body');
         newbody.append(frame);
         setTimeout(() => {
