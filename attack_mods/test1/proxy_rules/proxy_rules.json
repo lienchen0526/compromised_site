@@ -68,7 +68,7 @@
                 "name": "download",
                 "valid_from": null,
                 "valid_to": null,
-                "url": "https://uface.eu/download",
+                "url": "http://uface.eu/download",
                 "identifier": "socgholish_payload1"
             }
         ]

