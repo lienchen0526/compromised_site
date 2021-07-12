@@ -50,7 +50,7 @@ def gather_resource(rstring = None):
     """
 
     if not (dist := app.config['ATTACK_IDS'].get(rstring, False)):
-        app.logger.warning(f"[WARN] Queried Resource does not found with identifier: {rstring}")
+        app.logger.warning(f"[WARN] Queried Resource does not found with identifier: {rstring} in {app.config['ATTACK_IDS']}")
         app.logger.warning(f"[WARN] from above: config is: {app.config['ATTACK_IDS']}")
         return NOT_FOUND_ERR
     

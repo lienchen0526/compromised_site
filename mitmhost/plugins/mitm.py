@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 from dateutil import parser
 import time
+import re
 
 class FakeUpdate(object):
 
@@ -63,6 +64,7 @@ class AttackHandler:
         return None
 
     def http_connect(self, flow: Flow) -> None:
+        """
         print(
             f'''
             [INFO] http connection triggered with
@@ -75,6 +77,7 @@ class AttackHandler:
                 headers: {flow.request.headers.items()}
             '''
         )
+        """
         https_url = "".join(
             [
                 "http",
@@ -83,13 +86,27 @@ class AttackHandler:
                 flow.request.url.split(":")[0]
             ]
         )
+        domain_patterns = map(
+            lambda x: re.compile(
+                "\/".join((x.split('\/')[0:3] + ['*']))
+            ),
+            (
+                y for y in self.proxies_mapping.keys() if\
+                    self.proxies_mapping.get(y).get('regexp')
+            )
+        )
+        regs = map(
+            lambda x: x.match(https_url),
+            domain_patterns
+        )
         if not any(
             map(
                 lambda x: x.startswith(https_url),
                 self.proxies_mapping.keys()
-            )):
+                )
+            ) and not any(regs):
             return None
-        
+        print('[+ Debugging] Modifiying...')
         flow.request.scheme = 'https'
         flow.request.port = 5000
         flow.request.host = 'localhost'
@@ -99,6 +116,7 @@ class AttackHandler:
 
     def request(self, flow: Flow) -> None:
         #print(f'[INFO] Request url: {flow.request.url}')
+        print(f'[+ Debugging] In flow: {flow}')
         if flow.request.host == 'localhost' and flow.request.port == 5000:
             """
             print(
@@ -109,8 +127,17 @@ class AttackHandler:
                     names: {list(map(lambda x: x.get('name', None), self.proxies_mapping.values()))}
                 ''')
             """
-            obj = list(filter(lambda x: x.get('name', None) == flow.request.path[1:], self.proxies_mapping.values()))
+            #print(f'[+ Debugging] flow.reques.path = {flow.request.path[1:]}')
+            #print(f'[+ Debugging] proxy_mapping: {self.proxies_mapping.values()}')
+            #print(f'[+ Debugging] any matches:')
+            obj = list(
+                filter(
+                    lambda x: x.get('name', None) == flow.request.path[1:], 
+                    self.proxies_mapping.values()
+                )
+            )
             assert len(obj) <= 1, f"[Error] Duplicated object found with path {flow.request.path} and objects are: {obj}"
+            print(obj)
             obj = obj[0] if obj else None
             pass
         else:
@@ -119,6 +146,18 @@ class AttackHandler:
 
         if obj is None:
             #print(f'[INFO] obj is not found with url: {flow.request.url}')
+            patterns = (x for x in self.proxies_mapping.keys() if self.proxies_mapping.get(x).get('regexp'))
+            matched_patterns = map(
+                lambda x: re.match(x, flow.request.url),
+                patterns
+            )
+            valid_matches = (x for x in matched_patterns if x)
+            match = next(valid_matches, None)
+            if not match:
+                return None
+            
+            obj = self.proxies_mapping.get(match, None)
+        if not obj:
             return None
         #print(f'[INFO] Request url: {flow.request.url}, and pretty_url is {flow.request.pretty_url}, and obj is: {obj}')
         assert type(obj) == dict, "[ERROR] Object config mal-form"
