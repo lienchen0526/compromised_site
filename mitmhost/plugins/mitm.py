@@ -127,17 +127,22 @@ class AttackHandler:
                     names: {list(map(lambda x: x.get('name', None), self.proxies_mapping.values()))}
                 ''')
             """
-            #print(f'[+ Debugging] flow.reques.path = {flow.request.path[1:]}')
+            #print(f'[+ Debugging] flow.request.url = {flow.request.url.split("/")[3]}')
             #print(f'[+ Debugging] proxy_mapping: {self.proxies_mapping.values()}')
             #print(f'[+ Debugging] any matches:')
+            if not flow.request.url:
+                print(f"[+ Debugging] flow.url not exists: {flow}")
+            if not flow.request.url.startswith('http'):
+                print(f"[+ Debugging] flow.url must follow the pattern: http(s)://localhost:5000/path")
+            
             obj = list(
                 filter(
-                    lambda x: x.get('name', None) == flow.request.path[1:], 
+                    lambda x: x.get('name', None) == '/'.join(flow.request.url.split('/')[3:]),
                     self.proxies_mapping.values()
                 )
             )
             assert len(obj) <= 1, f"[Error] Duplicated object found with path {flow.request.path} and objects are: {obj}"
-            print(obj)
+            #print(f"[+ Debugging] Objects:{obj}")
             obj = obj[0] if obj else None
             pass
         else:
@@ -172,13 +177,14 @@ class AttackHandler:
             ]
         )
         flow.request.headers['Host'] = 'localhost'
-        print("[INFO] malicious request redirection detected")
-        print(f"[INFO] malicious request header: {flow.request.headers.items()}")
-        print(f"[INFO] malicious request url: {flow.request.url} at time: {time.time()}")
+        #print("[INFO] malicious request redirection detected")
+        #print(f"[INFO] malicious request header: {flow.request.headers.items()}")
+        #print(f"[INFO] malicious request url: {flow.request.url} at time: {time.time()}")
         return None
         
     
     def response(self, flow: Flow) -> None:
+        '''
         print(
             f"""
             [INFO] Detect Response:
@@ -187,6 +193,7 @@ class AttackHandler:
                 User-Agent: {flow.request.headers['User-Agent']}
                 """
             )
+        '''
         trgt = self.landing_host_mapping.get(flow.request.host, None)
         if trgt is None:
             return None
