@@ -1,0 +1,69 @@
+{
+    "identifier": {
+        "DGA": "dga_redirect_apt3.js",
+        "CHECK_VM": "check_vm_apt3.html",
+        "2_REDIR": "2_redirection_apt3.html",
+        "3_REDIR": "3_redirection_apt3.html",
+        "PROFILER": "info_profiler_apt3.js",
+        "FAKE_NORTAN_CC": "index_apt3.html",
+        "APT3_PAYLOAD": "apt3_payload.zip"
+    },
+    "resource_distribution_rules":{
+        "dga_redirect_apt3.js":{
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "application/javascript",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        },
+        "check_vm_apt3.html": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        },
+        "2_redirection_apt3.html": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        },
+        "3_redirection_apt3.html": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        },
+        "info_profiler_apt3.js": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "application/javascript",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        },
+        "apt3_payload.zip": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Content-Type": "attachment; filename=\"apt3_update.zip\""
+            },
+            "attack_origin": "APT3"
+        },
+        "index_apt3.html": {
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT3"
+        }
+    }
+}

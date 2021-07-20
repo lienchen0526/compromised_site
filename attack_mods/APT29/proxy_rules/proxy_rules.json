@@ -1,0 +1,35 @@
+{
+    "attack_description": { "plain_text": "hello",
+        "report_sources": [
+            "<url>",
+            "<url>"
+        ],
+        "IOCs": [
+            "hash1",
+            "hash2"
+        ]
+    },
+    "simrules":{
+        "time_duration": "<start-time>~<end-time>",
+        "landing_host": "abc.com",
+        "landing_method": {
+            "method": "injection",
+            "location": "head",
+            "node_str": "<script src=https://www.waykz.xyz/erp_apt29></script>",
+            "host": "abc.com",
+            "url": "https://abc.com/",
+            "strict": false
+        },
+        "objects":[
+            {
+                "Content-Type": "application/javascript",
+                "name": "erp_apt29",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://www.waykz.xyz/erp_apt29",
+                "on_land": true,
+                "identifier": "APT29_REDIR"
+            }
+        ]
+    }
+}

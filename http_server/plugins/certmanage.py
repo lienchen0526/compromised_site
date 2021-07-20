@@ -10,7 +10,7 @@ def cert_gen(
     organizationUnitName = "organizationUnitName",
     serialNumber = 0,
     validityStartInSeconds = 0,
-    validityEndInSeconds = 10*365*24*60*60,
+    validityEndInSeconds = 365*24*60*60,
     KEY_FILE = "private.key",
     CERT_FILE = "selfsigned.crt"):
     
@@ -30,6 +30,7 @@ def cert_gen(
     cert.get_subject().emailAddress = emailAddress
     cert.set_serial_number(serialNumber)
     cert.gmtime_adj_notBefore(0)
+    adsfasdf
     cert.gmtime_adj_notAfter(validityEndInSeconds)
     cert.set_issuer(cert.get_subject())
     cert.set_pubkey(k)

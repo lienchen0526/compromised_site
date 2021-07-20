@@ -1,0 +1,33 @@
+{
+    "identifier": {
+        "APT38_REDIR": "redir_apt38.html",
+        "APT38_DOWNLOAD": "index_apt38.html",
+        "APT38_AGENT": "install.bat"
+    },
+    "resource_distribution_rules":{
+        "redir_apt38.html":{
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT38"
+        },
+        "index_apt38.html":{
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "text/html",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT38"
+        },
+        "install.bat":{
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Disposition": "attachment; filename=\"install.bat\""
+            },
+            "Content-Type": "text/javascript",
+            "attack_origin": "APT38"
+        }
+    }
+}

