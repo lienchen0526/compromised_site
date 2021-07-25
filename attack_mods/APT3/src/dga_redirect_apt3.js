@@ -1,5 +1,5 @@
 function gen_rand() {
-    var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-';
+    var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     var rand_len = Math.floor(Math.random() * 10000) % 15 + 4;
     var result = '';
     for (var i=0; i<rand_len; ++i) {

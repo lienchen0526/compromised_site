@@ -2,7 +2,7 @@
     "identifier": {
         "APT38_REDIR": "redir_apt38.html",
         "APT38_DOWNLOAD": "index_apt38.html",
-        "APT38_AGENT": "install.bat"
+        "APT38_AGENT": "update-apt38.zip"
     },
     "resource_distribution_rules":{
         "redir_apt38.html":{
@@ -21,10 +21,10 @@
             },
             "attack_origin": "APT38"
         },
-        "install.bat":{
+        "update-apt38.zip":{
             "accept_methods": "GET",
             "creply_headers": {
-                "Content-Disposition": "attachment; filename=\"install.bat\""
+                "Content-Disposition": "attachment; filename=\"update.zip\""
             },
             "Content-Type": "text/javascript",
             "attack_origin": "APT38"
