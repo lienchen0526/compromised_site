@@ -52,9 +52,9 @@
         "apt3_payload.zip": {
             "accept_methods": "GET",
             "creply_headers": {
-                "Content-Type": "text/html",
-                "Content-Type": "attachment; filename=\"apt3_update.zip\""
+                "Content-Disposition": "attachment; filename=\"apt3_update.zip\""
             },
+            "Content-Type": "text/javascript",
             "attack_origin": "APT3"
         },
         "index_apt3.html": {
