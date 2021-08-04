@@ -127,24 +127,44 @@ class AttackHandler:
                     names: {list(map(lambda x: x.get('name', None), self.proxies_mapping.values()))}
                 ''')
             """
-            #print(f'[+ Debugging] flow.request.url = {flow.request.url.split("/")[3]}')
-            #print(f'[+ Debugging] proxy_mapping: {self.proxies_mapping.values()}')
+            print(f'[+ Debugging] flow.reques.path = {"/".join(flow.request.url.split("/")[3:])}')
+            print(f'[+ Debugging] proxy_mapping: {self.proxies_mapping.values()}')
             #print(f'[+ Debugging] any matches:')
             if not flow.request.url:
                 print(f"[+ Debugging] flow.url not exists: {flow}")
             if not flow.request.url.startswith('http'):
                 print(f"[+ Debugging] flow.url must follow the pattern: http(s)://localhost:5000/path")
-            
+
             obj = list(
                 filter(
-                    lambda x: x.get('name', None) == '/'.join(flow.request.url.split('/')[3:]),
+                    lambda x: x.get('name', None) == '/'.join(flow.request.url.split('/')[3:]), 
                     self.proxies_mapping.values()
                 )
             )
             assert len(obj) <= 1, f"[Error] Duplicated object found with path {flow.request.path} and objects are: {obj}"
-            #print(f"[+ Debugging] Objects:{obj}")
+            print(f'[+ Debugging] Objects: {obj}')
             obj = obj[0] if obj else None
-            pass
+            if not obj:
+                all_regex_obj = [y for y in self.proxies_mapping.values() if y.get('regexp')]
+                print(f'[+ Debugging] Trying regex objects')
+                # print(f'[+ Debugging] Regexed items: {all_regex_obj}')
+                print(f"[+ Debugging] '/'.join(flow.request.url.split('/')[3:]): {'/'.join(flow.request.url.split('/')[3:])}")
+                print(f'[+ Debugging] all names in regex_obj: ')
+                regexed_match_obj = list(
+                    map(
+                        lambda x: x if re.compile(x.get('name')).match('/'.join(flow.request.url.split('/')[3:])) else None,
+                        (y for y in self.proxies_mapping.values() if y.get('regexp'))
+                    )
+                )
+                regexed_obj = filter(
+                    lambda x: not x is None,
+                    regexed_match_obj
+                )
+                print(f'[+ Debugging] regexed_match_obj: {regexed_match_obj}')
+                obj = next(regexed_obj, None)
+                if obj:
+                    print(f'[+ Debugging] Regex object found. Obj: {obj}')
+
         else:
             #print(f'[Info] Local certificate not triggered and url is {flow.request.url}')
             obj = self.proxies_mapping.get(flow.request.url, None)

@@ -14,7 +14,7 @@
             },
             "Content-Type": "text/html",
             "accept_methods": "GET",
-            "attack_origin": "test1",
+            "attack_origin": "DOPPEL",
             "chunk_size": 2,
             "hash": "world hello"
         },
@@ -23,21 +23,21 @@
                 "Access-Control-Allow-Origin": "*"
             },
             "Content-Type": "text/javascript",
-            "attack_origin": "test1"
+            "attack_origin": "DOPPEL"
         },
         "redirector_path.json": {
             "creply_headers": {
                 "Access-Control-Allow-Origin": "*" 
             },
             "Content-Type": "application/json",
-            "attack_origin": "test1"
+            "attack_origin": "DOPPEL"
         },
         "iframe_redirector.js":{
             "creply_headers": {
                 "Access-Control-Allow-Origin": "*" 
             },
             "Content-Type": "text/javascript",
-            "attack_origin": "test1",
+            "attack_origin": "DOPPEL",
             "accept_methods": "GET:POST"
         },
         "update.zip": {
@@ -46,7 +46,7 @@
                 "Content-Disposition": "attachment; filename=\"update.zip\""
             },
             "Content-Type": "text/javascript",
-            "attack_origin": "test1"
+            "attack_origin": "DOPPEL"
         },
         "index.html":{
             "accept_methods": "GET:POST",
@@ -54,7 +54,7 @@
                 "Content-Type": "text/html",
                 "Access-Control-Allow-Origin": "*"
             },
-            "attack_origin": "test1"
+            "attack_origin": "DOPPEL"
         }
     }
 }

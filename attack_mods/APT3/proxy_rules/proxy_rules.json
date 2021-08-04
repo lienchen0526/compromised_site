@@ -1,0 +1,86 @@
+{
+    "attack_description": { "plain_text": "hello",
+        "report_sources": [
+            "<url>",
+            "<url>"
+        ],
+        "IOCs": [
+            "hash1",
+            "hash2"
+        ]
+    },
+    "simrules":{
+        "time_duration": "<start-time>~<end-time>",
+        "landing_host": "goodbye.appledaily.com",
+        "landing_method": {
+            "method": "injection",
+            "location": "head",
+            "node_str": "<script src=https://www.waykz.xyz/erp></script>",
+            "host": "goodbye.appledaily.com",
+            "url": "https://goodbye.appledaily.com",
+            "strict": false
+        },
+        "objects":[
+            {
+                "Content-Type": "application/javascript",
+                "name": "erp",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://www.waykz.xyz/erp",
+                "on_land": true,
+                "identifier": "DGA"
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "gateway.php\\?tk=.*",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https:\\/\\/.*?\\.foorest\\.net\\/gateway.php\\?tk=.*",
+                "identifier": "CHECK_VM",
+                "regexp": true
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "catcher\\?id=.*",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https:\\/\\/www\\.bestscript\\.xyz\\/catcher\\?id=.*",
+                "identifier": "2_REDIR",
+                "regexp": true
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "home_apt3\\.php",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https:\\/\\/.*?\\.cdn\\.garage\\.net\\/home_apt3\\.php",
+                "identifier": "3_REDIR",
+                "regexp": true
+            },
+            {
+                "Content-Type": "application/javascript",
+                "name": "identify.js",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://attack.apt3.kz/identify.js",
+                "identifier": "PROFILER"
+            },
+            {
+                "Content-Type": "text/html",
+                "name": "safebrowse.html",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://safenortan.vbs.net/safebrowse.html",
+                "identifier": "FAKE_NORTAN_CC"
+            },
+            {
+                "Content-Type": "application/javascript",
+                "name": "apt3_payload",
+                "valid_from": null,
+                "valid_to": null,
+                "url": "https://apt3.payload.net/apt3_payload",
+                "identifier": "APT3_PAYLOAD"
+            }
+        ]
+    }
+}

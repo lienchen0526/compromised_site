@@ -33,16 +33,6 @@
             },
             {
                 "Content-Type": "application/javascript",
-                "name": "entrypoint_regex.js",
-                "valid_from": null,
-                "valid_to": null,
-                "url": "https:\\/\\/.+\\.google\\.xyz\\/entrypoint_regex\\.js",
-                "on_land": true,
-                "identifier": "socgholish_entry1",
-                "regexp": true
-            },
-            {
-                "Content-Type": "application/javascript",
                 "name": "profiler.js",
                 "valid_from": null,
                 "valid_to": null,
@@ -59,10 +49,10 @@
             },
             {
                 "Content-Type": "text/html",
-                "name": "download.html",
+                "name": "download_doppel.html",
                 "valid_from": null,
                 "valid_to": null,
-                "url": "https://placeholder.xyz.net/download.html",
+                "url": "https://placeholder.xyz.net/download_doppel.html",
                 "identifier": "socgholish_landing1"
             },
             {

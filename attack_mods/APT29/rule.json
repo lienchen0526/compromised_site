@@ -1,0 +1,15 @@
+{
+    "identifier": {
+        "APT29_REDIR": "redir_apt29.js"
+    },
+    "resource_distribution_rules":{
+        "redir_apt29.js":{
+            "accept_methods": "GET",
+            "creply_headers": {
+                "Content-Type": "application/javascript",
+                "Access-Control-Allow-Origin": "*"
+            },
+            "attack_origin": "APT29"
+        }
+    }
+}
